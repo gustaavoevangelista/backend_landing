@@ -2,9 +2,11 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.1",
+    "mongoose": "^6.5.2",
     "mysql2": "^2.3.3"
   },
   "devDependencies": {
+    "dotenv": "^16.0.1",
     "nodemon": "^2.0.19"
   },
   "name": "landingimc",
@@ -12,8 +14,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon ./app/index.js",
-    "dev": "nodemon ./app/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon ./app/index.js"
   },
   "author": "Gustavo Evangelista",
   "license": "ISC",

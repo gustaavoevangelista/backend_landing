@@ -1,12 +1,20 @@
+require('dotenv').config()
+
 const express = require('express')
-const cors = require('cors')
-const db = require('../database/landing_db')
-
 const app = express()
-app.use(express.json())
-app.use(cors())
-const PORT = process.env.PORT || 8081
+const mongoose = require('mongoose')
 
-app.listen(PORT, () => {
-	console.log(`Server running at port:${PORT}`)
-})
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true })
+const db = mongoose.connection
+db.on('error', (error) => console.error(error))
+db.once('open', () => console.log('Connected to Database'))
+
+app.use(express.json())
+
+const subscribersRouter = require('../routes/subscribers')
+app.use('/subscribers', subscribersRouter)
+
+app.listen(3000, () => console.log('Server Started'))
+
+
+const cors = require('cors')
